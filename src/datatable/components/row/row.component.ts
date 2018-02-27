@@ -1,5 +1,5 @@
 import {Component, EventEmitter, forwardRef, Inject, Input, OnDestroy, Output} from '@angular/core';
-import {DataTable} from '../../';
+import {DataTable} from '../table/table.component';
 
 
 @Component({

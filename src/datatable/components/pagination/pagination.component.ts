@@ -1,5 +1,5 @@
 import {Component, forwardRef, Inject} from '@angular/core';
-import {DataTable} from '../../';
+import {DataTable} from '../table/table.component';
 
 
 @Component({

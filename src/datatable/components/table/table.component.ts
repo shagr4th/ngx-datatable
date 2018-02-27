@@ -11,7 +11,9 @@ import {
   TemplateRef,
   ViewChildren
 } from '@angular/core';
-import {DataTableColumn, DataTableRow, DataTableTitle} from '../../';
+import {DataTableColumn} from '../column/column.directive';
+import {DataTableRow} from '../row/row.component';
+import {DataTableTitle} from '../title/title.directive';
 import {drag} from '../../utils/drag';
 import {
   DataTableCellEvent,

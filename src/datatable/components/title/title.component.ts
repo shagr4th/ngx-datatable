@@ -1,5 +1,5 @@
 import {Component, forwardRef, HostListener, Inject} from '@angular/core';
-import {DataTable} from '../../';
+import {DataTable} from '../table/table.component';
 
 @Component({
   selector: 'data-table-title',

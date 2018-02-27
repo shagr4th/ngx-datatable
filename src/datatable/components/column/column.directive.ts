@@ -1,5 +1,5 @@
 import {ContentChild, Directive, Input, OnInit, TemplateRef} from '@angular/core';
-import {DataTableRow} from '../../';
+import {DataTableRow} from '../row/row.component';
 import {CellCallback} from '../types';
 
 @Directive({
