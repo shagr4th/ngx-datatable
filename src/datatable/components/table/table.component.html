@@ -2,7 +2,8 @@
   <data-table-title *ngIf="title"></data-table-title>
 
   <div class="data-table-box">
-    <table class="table table-condensed data-table">
+      <div style="overflow-y: scroll; overflow-x: hidden" #headerDiv>
+    <table class="table table-condensed data-table" style="margin-bottom: 0">
       <thead>
       <tr>
         <th [hide]="!expandColumnVisible" class="expand-column-header">
@@ -30,6 +31,9 @@
         </th>
       </tr>
       </thead>
+      </table></div>
+      <div style="max-height: 400px; overflow-y: scroll" (scroll)="onScroll($event)">
+      <table class="table table-condensed data-table"  style="margin-bottom: 0">
       <tbody *ngFor="let item of items; let index=index" class="data-table-row-wrapper"
              dataTableRow #row [item]="item" [index]="index" (selectedChange)="onRowSelectChanged(row)">
       </tbody>
@@ -43,7 +47,7 @@
         <td *ngFor="let column of columns" [hide]="!column.visible">
       </tr>
       </tbody>
-    </table>
+    </table></div>
     <div class="loading-cover" *ngIf="showReloading && reloading"></div>
   </div>
 

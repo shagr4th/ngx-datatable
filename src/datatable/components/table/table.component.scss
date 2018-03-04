@@ -11,11 +11,21 @@
 :host /deep/ .data-table > thead > tr > th,
 :host /deep/ .data-table > tbody > tr > td {
   overflow: hidden;
+  border-left: 1px solid rgb(222, 226, 230);
 }
 
 /* I can't use the bootstrap striped table, because of the expandable rows */
 :host /deep/ .row-odd {
   background-color: #F6F6F6;
+}
+
+:host /deep/ .index-column,
+:host /deep/ .index-column-header {
+    text-align: right;
+}
+
+:host /deep/ .data-table .data-table-row.selected {
+  background-color: #E4EDF9;
 }
 
 :host /deep/ .row-even {
@@ -37,6 +47,7 @@
 
 .column-header {
   position: relative;
+  
 }
 
 .expand-column-header {

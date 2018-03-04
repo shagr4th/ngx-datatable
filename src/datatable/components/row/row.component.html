@@ -12,12 +12,12 @@
     <span class="fa fa-arrow-circle-o-right" [hide]="expanded"></span>
     <span class="fa fa-arrow-circle-o-down" [hide]="!expanded"></span>
   </td>
-  <td [hide]="!dataTable.indexColumnVisible" class="index-column" [textContent]="displayIndex"></td>
+  <td [hide]="!dataTable.indexColumnVisible" class="index-column" [textContent]="displayIndex" width="40px"></td>
   <td [hide]="!dataTable.selectColumnVisible" class="select-column">
     <input type="checkbox" [(ngModel)]="selected"/>
   </td>
   <td *ngFor="let column of dataTable.columns" [hide]="!column.visible" [ngClass]="column.styleClassObject"
-      class="data-column"
+      class="data-column" [style.width]="column.width | px"
       [style.background-color]="column.getCellColor(_this, index)"
       (click)="dataTable.cellClicked(column, _this, $event)">
     <div *ngIf="!column.cellTemplate" [textContent]="item[column.property]"></div>

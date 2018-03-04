@@ -9,7 +9,9 @@ import {
   Output,
   QueryList,
   TemplateRef,
-  ViewChildren
+  ViewChildren,
+  ViewChild,
+  ElementRef
 } from '@angular/core';
 import {DataTableColumn} from '../column/column.directive';
 import {DataTableRow} from '../row/row.component';
@@ -32,6 +34,8 @@ import {
   styleUrls: ['table.component.scss']
 })
 export class DataTable<T> implements DataTableParams, OnInit {
+
+  @ViewChild('headerDiv') headerDiv: ElementRef;
 
   // UI state without input:
   indexColumnVisible: boolean;
@@ -275,6 +279,10 @@ export class DataTable<T> implements DataTableParams, OnInit {
       },
     });
   }
+
+  private onScroll($event:Event):void {
+    this.headerDiv.nativeElement.scrollLeft = $event.srcElement.scrollLeft;
+  };
 
   // init
   ngOnInit() {
