@@ -32,7 +32,7 @@
       </tr>
       </thead>
       </table></div>
-      <div style="max-height: 400px; overflow-y: scroll" (scroll)="onScroll($event)">
+      <div #scrollDiv style="max-height: 400px; overflow-y: scroll">
       <table class="table table-condensed data-table"  style="margin-bottom: 0">
       <tbody *ngFor="let item of items; let index=index" class="data-table-row-wrapper"
              dataTableRow #row [item]="item" [index]="index" (selectedChange)="onRowSelectChanged(row)">

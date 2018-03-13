@@ -12,7 +12,8 @@ import {
   ViewChildren,
   ViewChild,
   ElementRef,
-  ChangeDetectionStrategy
+  ChangeDetectionStrategy,
+  NgZone
 } from '@angular/core';
 import {DataTableColumn} from '../column/column.directive';
 import {DataTableRow} from '../row/row.component';
@@ -27,7 +28,8 @@ import {
   defaultTranslations,
   RowCallback
 } from '../types';
-
+import { Subscription } from 'rxjs/Subscription';
+import { fromEvent } from 'rxjs/observable/fromEvent';
 
 @Component({
   selector: 'data-table',
@@ -38,6 +40,9 @@ import {
 export class DataTable<T> implements DataTableParams, OnInit {
 
   @ViewChild('headerDiv') headerDiv: ElementRef;
+  @ViewChild('scrollDiv') scrollDiv: ElementRef;
+
+  constructor(private _zone:NgZone){}
 
   // UI state without input:
   indexColumnVisible: boolean;
@@ -286,6 +291,8 @@ export class DataTable<T> implements DataTableParams, OnInit {
     this.headerDiv.nativeElement.scrollLeft = $event.srcElement.scrollLeft;
   };
 
+  private _scrollSub:Subscription;
+
   // init
   ngOnInit() {
     this._initDefaultValues();
@@ -294,6 +301,18 @@ export class DataTable<T> implements DataTableParams, OnInit {
     if (this.autoReload && this._scheduledReload == null) {
       this.reloadItems();
     }
+
+    this._zone.runOutsideAngular(() => {
+      this._scrollSub = fromEvent(this.scrollDiv.nativeElement, 'scroll').subscribe((e:Event) => {
+          this.onScroll(e);
+        })
+    });
+
+  }
+
+  ngOnDestroy() {
+    // clean up subscriptions
+    this._scrollSub.unsubscribe();
   }
 
   private _initDefaultValues() {
