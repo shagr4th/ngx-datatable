@@ -1,4 +1,4 @@
-import {Component, EventEmitter, forwardRef, Inject, Input, OnDestroy, Output, ChangeDetectionStrategy} from '@angular/core';
+import {Component, EventEmitter, forwardRef, Inject, Input, OnDestroy, Output, ChangeDetectionStrategy, ChangeDetectorRef} from '@angular/core';
 import {DataTable} from '../table/table.component';
 
 
@@ -25,7 +25,11 @@ export class DataTableRow<T> implements OnDestroy {
   // FIXME is there no template keyword for this in angular 2?
   public _this = this;
 
-  constructor(@Inject(forwardRef(() => DataTable)) public dataTable: DataTable<T>) {
+  constructor(private ref: ChangeDetectorRef, @Inject(forwardRef(() => DataTable)) public dataTable: DataTable<T>) {
+  }
+
+  update() {
+    this.ref.markForCheck();
   }
 
   get selected() {

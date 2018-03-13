@@ -315,6 +315,10 @@ export class DataTable<T> implements DataTableParams, OnInit {
     this._scrollSub.unsubscribe();
   }
 
+  update() {
+    this.rows.toArray().forEach(row => row.update());
+  }
+
   private _initDefaultValues() {
     this.indexColumnVisible = this.indexColumn;
     this.selectColumnVisible = this.selectColumn;

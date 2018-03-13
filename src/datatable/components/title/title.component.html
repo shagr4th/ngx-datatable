@@ -33,7 +33,7 @@
         </div>
         <div *ngFor="let column of dataTable.columns" class="column-selector-column checkbox">
           <label>
-            <input type="checkbox" [(ngModel)]="column.visible"/>
+            <input type="checkbox" [(ngModel)]="column.visible" (change)="dataTable.update()"/>
             <span [textContent]="column.header"></span>
           </label>
         </div>
