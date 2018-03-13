@@ -14,8 +14,7 @@
   border-left: 1px solid rgb(222, 226, 230);
 }
 
-/* I can't use the bootstrap striped table, because of the expandable rows */
-:host /deep/ .row-odd {
+:host /deep/ .data-table tbody:nth-child(odd) {
   background-color: #F6F6F6;
 }
 
@@ -24,15 +23,11 @@
     text-align: right;
 }
 
-:host /deep/ .data-table .data-table-row.selected {
+:host /deep/ .data-table .selected tr {
   background-color: #E4EDF9;
 }
 
-:host /deep/ .row-even {
-}
-
-.data-table .substitute-rows > tr:hover,
-:host /deep/ .data-table .data-table-row:hover {
+:host /deep/ .data-table tr:hover {
   background-color: #ECECEC;
 }
 

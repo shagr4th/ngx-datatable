@@ -11,7 +11,8 @@ import {
   TemplateRef,
   ViewChildren,
   ViewChild,
-  ElementRef
+  ElementRef,
+  ChangeDetectionStrategy
 } from '@angular/core';
 import {DataTableColumn} from '../column/column.directive';
 import {DataTableRow} from '../row/row.component';
@@ -31,7 +32,8 @@ import {
 @Component({
   selector: 'data-table',
   templateUrl: 'table.component.html',
-  styleUrls: ['table.component.scss']
+  styleUrls: ['table.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DataTable<T> implements DataTableParams, OnInit {
 
