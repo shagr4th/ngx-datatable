@@ -1,7 +1,5 @@
 <tr [title]="getTooltip()"
     [style.background-color]="dataTable.getRowColor(item, index, _this)"
-    [class.row-odd]="index % 2 === 0"
-    [class.row-even]="index % 2 === 1"
     [class.selected]="selected"
     [class.clickable]="dataTable.selectOnRowClick"
     (dblclick)="dataTable.rowDoubleClicked(_this, $event)"
